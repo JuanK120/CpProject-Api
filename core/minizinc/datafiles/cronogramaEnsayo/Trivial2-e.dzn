@@ -1,0 +1,32 @@
+ACTORES = {Actor1, Actor2, Actor3, Actor4} ;
+
+Escenas = [| 1,1,0,0,0,0,10
+           | 0,1,1,1,0,1,20
+           | 0,0,0,0,1,1,15
+           | 1,1,0,0,1,1,13|]; 
+           
+Duracion = [2,1,1,1,3,4];
+
+Disponibilidad =[|Actor1, 5
+                 |Actor2, 8
+                 |Actor3, 0
+                 |Actor4, 10|];
+
+Evitar =[|Actor1, Actor2
+         |Actor2, Actor3|];
+         
+
+% Sol = [3, 4, 6, 2, 1, 5];
+% costo = 450;
+% Actor_Escenas = 
+% [| 4, 5,  3
+%  | 1, 4,  7
+%  | 3, 6, 10
+%  | 3, 6, 10
+%  |];
+% Actor_Costo = [30, 140, 150, 130];
+% compartidos = [1, 5];
+% Tiempo_Compartido = 6;
+% ----------
+% ==========
+% Finished in 505msec

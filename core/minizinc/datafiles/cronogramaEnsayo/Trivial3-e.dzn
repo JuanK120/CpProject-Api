@@ -1,0 +1,23 @@
+ACTORES = {Actor1, Actor2, Actor3, Actor4} ;
+
+Escenas = [| 1,1,0,0,1,0,9
+           | 1,0,1,1,0,1,22
+           | 0,0,1,0,1,1,12
+           | 1,1,0,1,1,1,18|]; 
+           
+Duracion = [2,1,1,1,3,4];
+
+Disponibilidad =[|Actor1, 8
+                 |Actor2, 11
+                 |Actor3, 0
+                 |Actor4, 15|];
+
+Evitar =[|Actor2, Actor3|];
+         
+
+%Orden de las Escenas: [4, 3, 6, 2, 1, 5]
+%Costo: 450
+%Tiempo Compartido: 6
+%----------
+%==========
+%Finished in 140msec

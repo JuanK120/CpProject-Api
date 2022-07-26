@@ -33,7 +33,10 @@ def runWithForm(request):
     args.append(req['Disponibilidad'])
     args.append(req['NumEvitaciones'])
     args.append(req['Evitar'])
+    args.append(req["problemType"])
+
     ret = cronogramaEnsayoWithForm(args)
+    
     return JsonResponse(ret,safe=False)
 
 @csrf_exempt

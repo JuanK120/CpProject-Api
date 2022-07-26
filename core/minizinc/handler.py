@@ -6,14 +6,6 @@ from unittest import result
 import pymzn
 import asyncio
 from pymzn.aio import minizinc
-import config 
-#testModel = Model("./models/test.mzn")
-
-#cronogramaEnsayo = Model('./models/cronogramaEnsayos.mzn')
-
-#gecode = Solver.lookup("gecode")
-
-
 
 def RunTestCase(num):
 
@@ -25,25 +17,43 @@ def RunTestCase(num):
     return ret
 
 def cronogramaEnsayoWithForm(args):
-    
-    solucion = pymzn.minizinc('./core/minizinc/models/cronogramaEnsayos.mzn', data={
-                                      'NumActores' : args[1],
-                                      'Actores' : args[0],
-                                      'NumEscenas' : args[2],
-                                      'Escenas' : args[3],
-                                      'Duracion' : args[4],
-                                      'NumActoresConDisponibilidad' : args[5],
-                                      'Disponibilidad' : args[6],
-                                      'NumEvitaciones' : args[7],
-                                      'Evitar': args[8],
-                                    }
-    )
-    if solucion.status is pymzn.Status.COMPLETE :
-        ret = [solucion[0],"Complete"]
-    if solucion.status is pymzn.Status.UNSATISFIABLE :
-        ret = [[],"Unsatisfiable"]
+    print("1")
 
-    return ret
+    aux = pymzn.dzn2dict(args[0])
+    
+    if (args[9]=="Simple"):
+        print(args[9])
+        solucion = pymzn.minizinc('./core/minizinc/models/cronogramaEnsayos.mzn', data={
+                                      'ACTORES' : aux["Actores"],
+                                      'Escenas' : args[3],
+                                      'Duracion' : args[4]
+                                    }
+        )
+        if solucion.status is pymzn.Status.COMPLETE :
+            ret = [solucion[0],"Complete"]
+        if solucion.status is pymzn.Status.UNSATISFIABLE :
+            ret = [[],"Unsatisfiable"]
+        return ret
+
+    print("2")
+
+    if (args[9]=="Complex"):
+        print(args[9])
+        solucion = pymzn.minizinc('./core/minizinc/models/cronogramaEnsayos_extendido.mzn', data={
+                                        'ACTORES' : aux['Actores'],
+                                        'Escenas' : args[3],
+                                        'Duracion' : args[4],
+                                        'Disponibilidad' : args[6],
+                                        'Evitar': args[8],
+                                        }
+        )
+        print('3')
+        if solucion.status is pymzn.Status.COMPLETE :
+            ret = [solucion[0],"Complete"]
+        if solucion.status is pymzn.Status.UNSATISFIABLE :
+            ret = [[],"Unsatisfiable"]
+        return ret
+    
 
 def cronogramaEnsayoWithFile(file):
     solucion = pymzn.minizinc('./core/minizinc/models/testCase.mzn',file)
