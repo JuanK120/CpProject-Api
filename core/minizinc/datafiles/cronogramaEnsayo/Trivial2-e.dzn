@@ -16,17 +16,7 @@ Evitar =[|Actor1, Actor2
          |Actor2, Actor3|];
          
 
-% Sol = [3, 4, 6, 2, 1, 5];
-% costo = 450;
-% Actor_Escenas = 
-% [| 4, 5,  3
-%  | 1, 4,  7
-%  | 3, 6, 10
-%  | 3, 6, 10
-%  |];
-% Actor_Costo = [30, 140, 150, 130];
-% compartidos = [1, 5];
-% Tiempo_Compartido = 6;
+% 5 1 2 6 4 3 450 6
 % ----------
 % ==========
-% Finished in 505msec
+% Finished in 457msec.

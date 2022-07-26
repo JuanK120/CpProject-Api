@@ -55,7 +55,15 @@ constraint Tiempo_Compartido = sum(i in 1..NumEvitar)(compartidos[i]);
 constraint alldifferent(Sol);
 
 % Funcion OBjetivo ajustada para evitar cuando sea posible
-solve minimize (costo+Tiempo_Compartido);
+
+% Busq por defecto
+%solve minimize (costo+Tiempo_Compartido);
+% Busq al azar
+%solve ::int_search(Sol,input_order,indomain_random) minimize (costo+Tiempo_Compartido);
+% Busq domino mas pequeño
+%solve ::int_search(Sol,first_fail,indomain_min) minimize (costo+Tiempo_Compartido);
+% Busq Ponderacion de fallos
+solve ::int_search(Sol,dom_w_deg,indomain_min) minimize (costo+Tiempo_Compartido);
 %
 
 output [show(Sol[i])++" "|i in index_set(Sol)]++[show(costo)++" "]++[show(Tiempo_Compartido)];

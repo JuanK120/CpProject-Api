@@ -15,9 +15,8 @@ Disponibilidad =[|Actor1, 8
 Evitar =[|Actor2, Actor3|];
          
 
-%Orden de las Escenas: [4, 3, 6, 2, 1, 5]
-%Costo: 450
-%Tiempo Compartido: 6
-%----------
-%==========
-%Finished in 140msec
+% ----------
+% 3 6 4 1 5 2 560 8
+% ----------
+% ==========
+% Finished in 474msec.
